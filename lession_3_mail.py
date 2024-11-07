@@ -1,4 +1,5 @@
 import os
+import smtplib
 from dotenv import load_dotenv
 load_dotenv()
 key = os.getenv("MY_KEY")
@@ -38,7 +39,6 @@ Content-Type: text/plain; charset="UTF-8";
 recipient_e = recipient_email, subject_e = subject_email, f_n = friend_name , m_n = sender_name, ws = site_name)
 letter = letter_template
 letter = letter.encode("UTF-8")
-import smtplib
 server = smtplib.SMTP_SSL("smtp.yandex.ru:465")
 server.login(login, key)
 server.sendmail(sender_email, recipient_email, letter)
